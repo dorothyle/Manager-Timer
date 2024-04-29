@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Timer from "./Timer";
 import "./App.css";
 
@@ -30,7 +30,14 @@ function App() {
     return remainingTime;
   };
   let meetingTime = getMeetingTime();
-  let remainingTime = getRemainingTime(meetingTime);
+  const [remainingTime, setRemainingTime] = useState(
+    getRemainingTime(meetingTime)
+  );
+  useEffect(() => {
+    setInterval(() => {
+      setRemainingTime(getRemainingTime(meetingTime));
+    }, 1000);
+  }, []);
   // decrement time
   // countdown to time in seconds
   // parse into how many days, hours, etc
