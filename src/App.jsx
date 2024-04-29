@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   // target time
-  const nextFriday = () => {
+  const getMeetingTime = () => {
     const today = new Date();
     const friday = new Date(today.getTime());
     friday.setDate(today.getDate() + ((7 + 5 - today.getDay()) % 7));
@@ -13,19 +13,35 @@ function App() {
     friday.setSeconds(0);
     return friday;
   };
-  let meetingTime = nextFriday();
+  // calculate time until meeting
+  const getRemainingTime = (meetingTime) => {
+    const now = new Date();
+    const goal = meetingTime - now;
+    let days = goal / 1000 / 60 / 60 / 24;
+    let hours = (days % 1) * 24;
+    let minutes = (hours % 1) * 60;
+    let seconds = (minutes % 1) * 60;
+    const remainingTime = {
+      days: days.toFixed(0),
+      hours: hours.toFixed(0),
+      minutes: minutes.toFixed(0),
+      seconds: seconds.toFixed(0),
+    };
+    return remainingTime;
+  };
+  let meetingTime = getMeetingTime();
+  let remainingTime = getRemainingTime(meetingTime);
   // decrement time
   // countdown to time in seconds
   // parse into how many days, hours, etc
   return (
     <>
       <h1>TIME UNTIL NEXT MANAGER's MEETING</h1>
-      <h2>{meetingTime.toString()}</h2>
       <div className="timer-container">
-        <Timer number={13} unit={"Days"} />
-        <Timer number={23} unit={"Hours"} />
-        <Timer number={59} unit={"Minutes"} />
-        <Timer number={58} unit={"Seconds"} />
+        <Timer number={remainingTime.days} unit={"Days"} />
+        <Timer number={remainingTime.hours} unit={"Hours"} />
+        <Timer number={remainingTime.minutes} unit={"Minutes"} />
+        <Timer number={remainingTime.seconds} unit={"Seconds"} />
       </div>
     </>
   );
