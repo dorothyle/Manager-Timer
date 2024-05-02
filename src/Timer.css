@@ -1,3 +1,8 @@
+.time-unit-container p {
+    color: #FFFFFF;
+    font-size: 40px;
+}
+
 .number-box {
   background-color: #292828;
   display: flex;
