@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import header from "./assets/header.svg";
 import Timer from "./Timer";
 import "./App.css";
 
@@ -42,15 +43,16 @@ function App() {
   // countdown to time in seconds
   // parse into how many days, hours, etc
   return (
-    <>
-      <h1>TIME UNTIL NEXT MANAGER'S MEETING</h1>
+    <div className="app-container">
+      <img className="header" src={header} />
+      <h1>Time Until Manager’s Meeting</h1>
       <div className="timer-container">
         <Timer number={remainingTime.days} unit={"Days"} />
         <Timer number={remainingTime.hours} unit={"Hours"} />
         <Timer number={remainingTime.minutes} unit={"Minutes"} />
         <Timer number={remainingTime.seconds} unit={"Seconds"} />
       </div>
-    </>
+    </div>
   );
 }
 

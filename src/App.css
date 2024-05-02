@@ -41,8 +41,27 @@
   color: #888;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app-container h1 {
+  font-size: 80px;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
 .timer-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 9rem;
 }
