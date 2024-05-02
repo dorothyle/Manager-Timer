@@ -43,7 +43,7 @@ function App() {
   // parse into how many days, hours, etc
   return (
     <>
-      <h1>TIME UNTIL NEXT MANAGER's MEETING</h1>
+      <h1>TIME UNTIL NEXT MANAGER'S MEETING</h1>
       <div className="timer-container">
         <Timer number={remainingTime.days} unit={"Days"} />
         <Timer number={remainingTime.hours} unit={"Hours"} />
